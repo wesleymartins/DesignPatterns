@@ -10,27 +10,23 @@ package com.designpatternstp2.Creational.builder;
  *
  * @author Wesley
  */
-public abstract class ItalianMealBuilder implements MealBuilder{
-    private Meal meal;
+public class MealDirector {
     
-    public ItalianMealBuilder()
+    private MealBuilder mealBuilder = null;
+    
+    public MealDirector(MealBuilder mealBuilder)
     {
-        meal = new Meal();
+        this.mealBuilder = mealBuilder;
     }
     
-    public void buildDrink()
+    public void ConstructMeal()
     {
-        meal.setDrink("Red Wine");
-    }
-    
-    public void buildFood()
-    {
-        meal.setFood("Pizza");
+        mealBuilder.buildDrink();
+        mealBuilder.buildFood();
     }
     
     public Meal getMeal()
     {
-        return meal;
+        return mealBuilder.getMeal();
     }
-    
 }
