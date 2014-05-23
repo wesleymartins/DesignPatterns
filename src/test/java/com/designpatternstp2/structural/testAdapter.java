@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.structural;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.structural.adapter.TemperatureClassReporter;
+import com.designpatternstp2.structural.adapter.TemperatureInfo;
+import com.designpatternstp2.structural.adapter.TemperatureObjectReporter;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,23 +20,28 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testAdapter {
     
-    public testAbstractFactory() {
+    public testAdapter() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
+     public void adapTest() {
+     
+     TemperatureInfo tempInfo = (TemperatureInfo) new TemperatureClassReporter();
+     tempInfo.setTemperatureInC(10);
+         assertEquals(tempInfo.getTemperatureInC(), 10.0);
+         assertEquals(tempInfo.getTemperatureInF(), 50.0);
          
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+         tempInfo = new TemperatureObjectReporter();
+         tempInfo.setTemperatureInf(85);
+         assertEquals(tempInfo.getTemperatureInC(), 29.444444444444443);
+         assertEquals(tempInfo.getTemperatureInF(), 85.0);
      }
-
+     
     @BeforeClass
     public static void setUpClass() throws Exception {
     }

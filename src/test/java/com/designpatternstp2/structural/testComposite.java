@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.structural;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.structural.composite.Composite;
+import com.designpatternstp2.structural.composite.Leaf;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,21 +19,36 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testComposite {
     
-    public testAbstractFactory() {
+    public testComposite() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+     public void hello() {
+     Leaf l1 = new Leaf("Wes");
+     Leaf l2 = new Leaf("Fred");
+     Leaf l3 = new Leaf("Sue");
+     Leaf l4 = new Leaf("Ellen");
+     Leaf l5 = new Leaf("Joe");
+     
+     Composite composite1 = new Composite();
+     composite1.add(l1);
+     composite1.add(l2);
+     
+     Composite composite2 = new Composite();
+     composite2.add(l3);
+     composite2.add(l4);
+     
+     Composite composite3 = new Composite();
+     composite3.add(composite1);
+     composite3.add(composite2);
+     composite3.add(l5);
+     
+     assertEquals(l1.sayHello(), "Hello Wes");
      }
 
     @BeforeClass

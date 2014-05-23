@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.behavioral;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.behavioral.templatemethod.BurgerMeal;
+import com.designpatternstp2.behavioral.templatemethod.CheeseBurgerMeal;
+import com.designpatternstp2.behavioral.templatemethod.Meal;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,22 +20,22 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testTemplateMethod {
     
-    public testAbstractFactory() {
+    public testTemplateMethod() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+     @Test
+     public void testMeal() {
+     Meal meal1 = new BurgerMeal();
+     Meal meal2 = new CheeseBurgerMeal();
+         assertEquals(meal1.doMeal(), " get burger cooking burger mmm cleaning");
+         assertEquals(meal2.doMeal(), " get cheese cooking yumclean");
      }
+
 
     @BeforeClass
     public static void setUpClass() throws Exception {

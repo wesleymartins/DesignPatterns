@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.behavioral;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.behavioral.memento.DietInfo;
+import com.designpatternstp2.behavioral.memento.DietInfoCaretaker;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,21 +19,28 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testMemento {
     
-    public testAbstractFactory() {
+    public testMemento() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+     @Test
+     public void hello() {
+     DietInfoCaretaker dietInfoCaretaker = new DietInfoCaretaker();
+     
+     DietInfo dietInfo = new DietInfo("Fred", 1, 100);
+     dietInfo.setDayNumberAndWeight(2, 99);
+     dietInfoCaretaker.saveState(dietInfo);
+     dietInfo.setDayNumberAndWeight(3, 98);
+     
+     assertEquals(dietInfo.getWeight(), 98);
+     dietInfo.setDayNumberAndWeight(4, 97);
+     dietInfoCaretaker.restoreState(dietInfo);
+     
+      assertEquals(dietInfo.getWeight(), 99);
      }
 
     @BeforeClass

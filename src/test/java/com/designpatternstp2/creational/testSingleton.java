@@ -6,7 +6,7 @@
 
 package com.designpatternstp2.creational;
 
-import com.designpatternstp2.Creational.singleton.Singleton;
+import com.designpatternstp2.creational.singleton.Singleton;
 import junit.framework.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;

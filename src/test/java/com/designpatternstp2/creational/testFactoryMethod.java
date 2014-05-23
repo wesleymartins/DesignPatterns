@@ -6,8 +6,8 @@
 
 package com.designpatternstp2.creational;
 
-import com.designpatternstp2.Creational.factorymethod.Animal;
-import com.designpatternstp2.Creational.factorymethod.AnimalFactory;
+import com.designpatternstp2.creational.factorymethod.Animal;
+import com.designpatternstp2.creational.factorymethod.AnimalFactory;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;

@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.structural;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.structural.flyweight.Flyweight;
+import com.designpatternstp2.structural.flyweight.FlyweightFactory;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,21 +19,21 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testFlyweight {
     
-    public testAbstractFactory() {
+    public testFlyweight() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+         @Test
+     public void flyweighttest() {
+     FlyweightFactory flyweightFactory = FlyweightFactory.getInstance();
+     Flyweight flyweightAdder = flyweightFactory.getFlyweight("add");
+     Flyweight flyweightmult = flyweightFactory.getFlyweight("multiply");
+         assertEquals(flyweightAdder.doMath(2, 3), 5);
+         assertEquals(flyweightmult.doMath(2, 3), 6);
      }
 
     @BeforeClass

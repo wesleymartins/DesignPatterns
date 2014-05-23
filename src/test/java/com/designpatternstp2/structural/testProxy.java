@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.structural;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.structural.proxy.FastThing;
+import com.designpatternstp2.structural.proxy.Proxy;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,22 +19,23 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testProxy {
     
-    public testAbstractFactory() {
+    public testProxy() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+     public void proxytest() {
+     Proxy proxy = new Proxy();
+     FastThing fastThing = new FastThing();
+     assertEquals(fastThing.sayHello(),"FastThing Hello ");
+     assertEquals(proxy.sayHello(), "SlowThing Hello ");
+          
      }
+
 
     @BeforeClass
     public static void setUpClass() throws Exception {

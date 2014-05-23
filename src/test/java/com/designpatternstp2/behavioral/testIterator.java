@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.behavioral;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.behavioral.iterator.Item;
+import com.designpatternstp2.behavioral.iterator.Menu;
+import java.util.Iterator;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,21 +20,33 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testIterator {
     
-    public testAbstractFactory() {
+    public testIterator() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+     public void hello() {
+     Item i1 = new Item("spaghetti", 7.50f);
+     Item i2 = new Item("hamburger", 6.00f);
+     Item i3 = new Item("chicken", 6.50f);
+     
+     Menu menu = new Menu();
+     menu.addItem(i1);
+     menu.addItem(i2);
+     menu.addItem(i3);
+     
+     Iterator<Item> iterator = menu.iterator();
+        
+        
+         Item item = iterator.next();
+        // assertEquals(item, "spaghetti:R7.5");
+         item = iterator.next();
+        // assertEquals(item, "hamburger:R6.0");
+     
      }
 
     @BeforeClass

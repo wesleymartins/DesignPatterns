@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 
-package com.designpatternstp2.creational;
+package com.designpatternstp2.structural;
 
-import com.designpatternstp2.creational.abstractfactory.AbstractFactory;
-import com.designpatternstp2.creational.abstractfactory.SpeciesFactory;
-import com.designpatternstp2.creational.factorymethod.Animal;
-import org.testng.Assert;
+import com.designpatternstp2.structural.decorator.Animal;
+import com.designpatternstp2.structural.decorator.GrowlDecorator;
+import com.designpatternstp2.structural.decorator.LegDecorator;
+import com.designpatternstp2.structural.decorator.LivingAnimal;
+import com.designpatternstp2.structural.decorator.WingDecorator;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -21,21 +22,25 @@ import org.testng.annotations.Test;
  *
  * @author Wesley
  */
-public class testAbstractFactory {
+public class testDecorator {
     
-    public testAbstractFactory() {
+    public testDecorator() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    @Test
-     public void TestReptileFact() {
-         AbstractFactory abstractFact = new AbstractFactory();
-         SpeciesFactory speciesFactR = abstractFact.getSpeciesFactory("Reptile");
-         
-         Animal drag = speciesFactR.getAnimal("Dragon");
-         Assert.assertEquals(drag.makeSound(), "Roar!", "Run Forrest, Run");
+      @Test
+     public void decoratorT() {
+     Animal animal= new LivingAnimal();
+         assertEquals(animal.describe(), "living");
+      animal= new LegDecorator(animal);
+       assertEquals(animal.describe(), "living dance");
+       animal= new WingDecorator(animal);
+        assertEquals(animal.describe(), "living dance fly");
+        animal = new GrowlDecorator(animal);
+        animal = new GrowlDecorator(animal);
+         assertEquals(animal.describe(), "living dance fly Grr Grr");
      }
 
     @BeforeClass

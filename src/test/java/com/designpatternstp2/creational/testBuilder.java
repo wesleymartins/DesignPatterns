@@ -6,10 +6,10 @@
 
 package com.designpatternstp2.creational;
 
-import com.designpatternstp2.Creational.builder.ItalianMealBuilder;
-import com.designpatternstp2.Creational.builder.Meal;
-import com.designpatternstp2.Creational.builder.MealBuilder;
-import com.designpatternstp2.Creational.builder.MealDirector;
+import com.designpatternstp2.creational.builder.ItalianMealBuilder;
+import com.designpatternstp2.creational.builder.Meal;
+import com.designpatternstp2.creational.builder.MealBuilder;
+import com.designpatternstp2.creational.builder.MealDirector;
 import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -35,9 +35,9 @@ public class testBuilder {
      {
          MealBuilder mealBuilder = new ItalianMealBuilder() {};
          MealDirector mealDirector = new MealDirector(mealBuilder);
+         mealDirector.ConstructMeal();
          Meal meal = mealDirector.getMeal();
-         Assert.assertEquals(meal, meal);
-     
+         assertEquals(meal.getFood(), "Pizza");
      }
 
     @BeforeClass
